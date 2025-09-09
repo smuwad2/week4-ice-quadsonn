@@ -22,10 +22,41 @@
                 // Invalid age: Age must be between 10 and 40.
                 // Invalid email: Email must contain the character @.
                 // Empty password: Password must be non-empty.
-                var errorMessages="";
-                
-                
+            var errorMessages="";
+                 // Get the form by name
+            var form = document.forms[formName];
+
+            // Get values from the form
+            var age = parseInt(form.age.value);
+            var email = form.email.value;
+            var password = form.password.value;
+
+            // Initialize error message string
+            var errorMessages = "";
+
+            // Validate age
+            if (isNaN(age) || age < 10 || age > 40) {
+                errorMessages += "Age must be between 10 and 40.\n";
             }
+
+            // Validate email
+            if (!email.includes("@")) {
+                errorMessages += "Email must contain the character @.\n";
+            }
+
+            // Validate password
+            if (password.trim() === "") {
+                errorMessages += "Password must be non-empty.\n";
+            }
+
+            // If there are any errors, show alert and prevent form submission
+            if (errorMessages !== "") {
+                alert(errorMessages);
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
      
          </script>
 </body>
