@@ -30,12 +30,13 @@
             var age = parseInt(form.age.value);
             var email = form.email.value;
             var password = form.password.value;
+            var id = form.id.value;
 
             // Initialize error message string
             var errorMessages = "";
 
             // Validate age
-            if (isNaN(age) || age < 10 || age > 40) {
+            if (age < 10 || age > 40) {
                 errorMessages += "Age must be between 10 and 40.\n";
             }
 
@@ -47,6 +48,11 @@
             // Validate password
             if (password.trim() === "") {
                 errorMessages += "Password must be non-empty.\n";
+            }
+
+            if ((id.length)>10){
+                errorMessages += "Id value cannot be more than 10 characters.\n";
+
             }
 
             // If there are any errors, show alert and prevent form submission
